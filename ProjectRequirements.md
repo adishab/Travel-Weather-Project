@@ -1,7 +1,8 @@
 # Requirements Gathering:
-    	The idea for this API were identified by thinking about common problems people face when planning trips. 
-      Many travelers want to know where to go, what to do, what the weather is like and how much the trip might cost. 
-      These needs helped guide the main features of the API since they are usually some of the first questions people ask before making travel plans.
+
+The idea for this API were identified by thinking about common problems people face when planning trips. 
+ Many travelers want to know where to go, what to do, what the weather is like and how much the trip might cost. 
+These needs helped guide the main features of the API since they are usually some of the first questions people ask before making travel plans.
 
 The requirements were developed by thinking through what a real user would need from a travel recommendation system. 
 The API should not only list destinations, but also help users compare them based on practical details such as budget, activities and weather. 
