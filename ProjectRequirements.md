@@ -1,6 +1,5 @@
 # Travel and Weather API 
 
-# Introduction:
 # Project Description:
 Our Travel and Weather API is a service that can provide travel suggestions based on a users’ preferences such as budget, desired activities, travel style, and mood. The API will focus on a few destinations and will return recommended itineraries as well as weather expectations and estimated budget. This system is designed to help users with the early stages of trip planning so instead of going through multiple travel and weather sites, it is condensed into one single easy to consume API. Through centralizing and automating recommendations, the Travel and Weather API will reduce decision fatigue and support spontaneous travel thus enhancing a user’s confidence in choosing a destination.
 
@@ -17,8 +16,6 @@ Bloggers/Content Creators: people that need structured travel data
 The idea for this API were identified by thinking about common problems people face when planning trips. Many travelers want to know where to go, what to do, what the weather is like and how much the trip might cost. These needs helped guide the main features of the API since they are usually some of the first questions people ask before making travel plans.
 
 The requirements were developed by thinking through what a real user would need from a travel recommendation system. The API should not only list destinations, but also help users compare them based on practical details such as budget, activities and weather. Existing travel websites such as Expedia and TripAdvisor were also used as examples to understand what kinds of information travelers usually look for. The API is kept focused on a small group of destinations so the information can be clear and realistic.
-
-# Functional Requirement:
 
 # Functional Requirements
 - The API should allow users to receive travel destination suggestions based on their preferences. These preferences may include budget, activities, travel style or mood.
