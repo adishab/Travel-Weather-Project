@@ -1,25 +1,8 @@
-# Introduction
-
-## Project Description
-Our Travel and Weather API is a service that can provide travel suggestions based on a users’ preferences such as budget, desired activities, travel style, and mood. The API will focus on a few destinations and will return recommended itineraries as well as weather expectations and estimated budget. This system is designed to help users with the early stages of trip planning so instead of going through multiple travel and weather sites, it is condensed into one single easy to consume API. Through centralizing and automating recommendations, the Travel and Weather API will reduce decision fatigue and support spontaneous travel thus enhancing a user’s confidence in choosing a destination.
-
-# Problem Statements
-Planning a trip can be very overwhelming, most travelers bounce between dozens of websites trying to compare destinations, estimate budget, check the weather, and figuring out what is actually worth doing once you’re there. This process can be very time consuming and can take the fun out of the initial experience. The Travel and Weather API eliminates all of that friction by turning all that scattered information into a single recommendation engine. Instead of digging through blogs and travel guides, users can get instant personalized suggestions for multiple destinations complete with itineraries, weather expectations, and realistic budget ranges. It’s fast and designed to inspire confident travel with no stress.
-
-# Stakeholders
-- **Primary Users:** travelers that need quick trip ideas/inspiration  
-- **Travel Agencies:** businesses that want automated itinerary suggestions  
-- **Developers:** Individuals that want to integrate the API into travel apps/websites  
-- **Bloggers/Content Creators:** people that need structured travel data  
-
----
-
-# Requirements Gathering
 # Travel and Weather API 
 
 # Introduction:
 # Project Description:
-Our Travel and Weather API is a com.travelweather.service that can provide travel suggestions based on a users’ preferences such as budget, desired activities, travel style, and mood. The API will focus on a few destinations and will return recommended itineraries as well as weather expectations and estimated budget. This system is designed to help users with the early stages of trip planning so instead of going through multiple travel and weather sites, it is condensed into one single easy to consume API. Through centralizing and automating recommendations, the Travel and Weather API will reduce decision fatigue and support spontaneous travel thus enhancing a user’s confidence in choosing a destination.
+Our Travel and Weather API is a service that can provide travel suggestions based on a users’ preferences such as budget, desired activities, travel style, and mood. The API will focus on a few destinations and will return recommended itineraries as well as weather expectations and estimated budget. This system is designed to help users with the early stages of trip planning so instead of going through multiple travel and weather sites, it is condensed into one single easy to consume API. Through centralizing and automating recommendations, the Travel and Weather API will reduce decision fatigue and support spontaneous travel thus enhancing a user’s confidence in choosing a destination.
 
 # Problem Statement:
 Planning a trip can be very overwhelming, most travelers bounce between dozens of websites trying to compare destinations, estimate budget, check the weather, and figuring out what is actually worth doing once you’re there. This process can be very time consuming and can take the fun out of the initial experience. The Travel and Weather API eliminates all of that friction by turning all that scattered information into a single recommendation engine. Instead of digging through blogs and travel guides, users can get instant personalized suggestions for multiple destinations complete with itineraries, weather expectations, and realistic budget ranges. It’s fast and designed to inspire confident travel with no stress. 
