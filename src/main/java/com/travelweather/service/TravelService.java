@@ -12,48 +12,15 @@ import java.util.List;
 public class TravelService {
 
     private final WeatherService weatherService;
+    private final DestinationDataService destinationDataService;
+    public TravelService(WeatherService weatherService, DestinationDataService destinationDataService) {
 
-    public TravelService(WeatherService weatherService) {
         this.weatherService = weatherService;
+        this.destinationDataService = destinationDataService;
     }
 
-    public List<Destination> getRecommendedDestinations() {
-        List<Destination> destinations = new ArrayList<>();
-
-        destinations.add(new Destination(
-                "Tokyo",
-                "Japan",
-                "A vibrant city with amazing food and culture.",
-                68.0,
-                "$1500 - $2500",
-                List.of("Food tours", "Temples", "Shopping"),
-                "Urban",
-                List.of("Day 1: Shibuya", "Day 2: Asakusa", "Day 3: Akihabara")
-        ));
-
-        destinations.add(new Destination(
-                "Paris",
-                "France",
-                "Romantic city with iconic landmarks and art.",
-                70.0,
-                "$1800 - $3000",
-                List.of("Museums", "Cafes", "Landmarks"),
-                "Romantic",
-                List.of("Day 1: Eiffel Tower", "Day 2: Louvre", "Day 3: Montmartre")
-        ));
-
-        destinations.add(new Destination(
-                "Cancun",
-                "Mexico",
-                "Beautiful beaches and warm weather.",
-                85.0,
-                "$1200 - $2000",
-                List.of("Beach", "Snorkeling", "Nightlife"),
-                "Relax",
-                List.of("Day 1: Beach Day", "Day 2: Snorkeling", "Day 3: Night Life")
-        ));
-
-        return destinations;
+    public List<Destination> getRecommendedDestinations(){
+        return destinationDataService.getDestinations();
     }
 
     public List<Destination> getDestinationsWithGoodWeather() {

@@ -30,7 +30,9 @@ public class TravelController {
     }
 
     @GetMapping("/travel/details")
-    public TravelDetails getDetails(@RequestParam String city) {
+    public TravelDetails getDetails(@RequestParam("city") String city) {
         return travelService.getDetails(city);
     }
+
+
 }
