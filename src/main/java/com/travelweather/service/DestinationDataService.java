@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,7 +123,7 @@ public class DestinationDataService {
             String json = mapper.writeValueAsString(updated);
 
             HttpEntity<String> request = new HttpEntity<>(json, headers);
-            RestTemplate restTemplate = new RestTemplate();
+            RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 
             restTemplate.exchange(
                     url,

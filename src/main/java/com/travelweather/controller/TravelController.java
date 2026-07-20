@@ -50,13 +50,13 @@ public class TravelController {
 
     // PUT — Update a destination
     @PutMapping("/travel/{name}")
-    public Destination updateDestination(@PathVariable String name, @RequestBody Destination d) {
+    public Destination updateDestination(@PathVariable("name") String name, @RequestBody Destination d) {
         return travelService.updateDestination(name, d);
     }
 
     // DELETE — Remove a destination
     @DeleteMapping("/travel/{name}")
-    public String deleteDestination(@PathVariable String name) {
+    public String deleteDestination(@PathVariable("name") String name) {
         travelService.deleteDestination(name);
         return "Destination deleted: " + name;
     }
