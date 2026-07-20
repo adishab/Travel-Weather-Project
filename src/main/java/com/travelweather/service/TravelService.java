@@ -13,16 +13,22 @@ public class TravelService {
 
     private final WeatherService weatherService;
     private final DestinationDataService destinationDataService;
-    public TravelService(WeatherService weatherService, DestinationDataService destinationDataService) {
 
+    public TravelService(WeatherService weatherService, DestinationDataService destinationDataService) {
         this.weatherService = weatherService;
         this.destinationDataService = destinationDataService;
     }
 
-    public List<Destination> getRecommendedDestinations(){
+    // GET — All destinations
+    public List<Destination> getAllDestinations() {
+        return destinationDataService.getDestinations();
+    }
+    // GET — Recommendations
+    public List<Destination> getRecommendedDestinations() {
         return destinationDataService.getDestinations();
     }
 
+    // GET — Good weather destinations
     public List<Destination> getDestinationsWithGoodWeather() {
         List<Destination> all = getRecommendedDestinations();
         List<Destination> good = new ArrayList<>();
@@ -38,6 +44,7 @@ public class TravelService {
         return good;
     }
 
+    // GET — Destination details
     public TravelDetails getDetails(String city) {
         Destination destination = getRecommendedDestinations()
                 .stream()
@@ -49,5 +56,21 @@ public class TravelService {
 
         return new TravelDetails(destination, weather);
     }
+
+    // POST — Add destination
+    public Destination addDestination(Destination d) {
+        return destinationDataService.addDestination(d);
+    }
+
+    // PUT — Update destination
+    public Destination updateDestination(String name, Destination d) {
+        return destinationDataService.updateDestination(name, d);
+    }
+
+    // DELETE — Remove destination
+    public void deleteDestination(String name) {
+        destinationDataService.deleteDestination(name);
+    }
 }
+
 
