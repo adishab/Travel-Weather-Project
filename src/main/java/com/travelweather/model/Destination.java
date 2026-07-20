@@ -22,6 +22,11 @@ public class Destination {
 
     private List<String> itinerary;
 
+    // ⭐ No-argument constructor (required for scheduled tasks & JSON)
+    public Destination() {
+    }
+
+    // ⭐ Full constructor
     public Destination(
             @JsonProperty("name") String name,
             @JsonProperty("country") String country,
@@ -42,6 +47,7 @@ public class Destination {
         this.itinerary = itinerary;
     }
 
+    // ⭐ Getters
     public String getName() {
         return name;
     }
@@ -73,5 +79,37 @@ public class Destination {
     public List<String> getItinerary() {
         return itinerary;
     }
-}
 
+    // ⭐ Setters (these FIX your scheduled task errors)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setAverageTemperature(double averageTemperature) {
+        this.averageTemperature = averageTemperature;
+    }
+
+    public void setBudgetRange(String budgetRange) {
+        this.budgetRange = budgetRange;
+    }
+
+    public void setActivities(List<String> activities) {
+        this.activities = activities;
+    }
+
+    public void setTravelStyle(String travelStyle) {
+        this.travelStyle = travelStyle;
+    }
+
+    public void setItinerary(List<String> itinerary) {
+        this.itinerary = itinerary;
+    }
+}
