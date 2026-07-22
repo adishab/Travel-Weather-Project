@@ -3,6 +3,10 @@ package com.travelweather.controller;
 import com.travelweather.model.Destination;
 import com.travelweather.model.TravelDetails;
 import com.travelweather.service.TravelService;
+import com.travelweather.model.TravelPersonalityRequest;
+import com.travelweather.model.TravelPersonalityResult;
+import com.travelweather.service.RecommendationService;
+import com.travelweather.model.RecommendationResult;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,14 +18,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class TravelController {
 
     private final TravelService travelService;
 
-    public TravelController(TravelService travelService) {
+    // Inject RecommendationService
+    private final RecommendationService recommendationService;
+
+    // Spring can inject both services
+    public TravelController(TravelService travelService, RecommendationService recommendationService) {
         this.travelService = travelService;
+        this.recommendationService = recommendationService;
     }
 
     // GET — All destinations
@@ -30,7 +40,35 @@ public class TravelController {
         return travelService.getAllDestinations();
     }
 
-    // GET — Good weather destinations
+
+    // GET — Weather only recommendations
+    @GetMapping("/recommend/weather")
+    public List<RecommendationResult> recommendByWeather(
+            @RequestParam String weather
+    ) {
+        return recommendationService.getTopMatchesWithReasons(null, null, null, weather);
+    }
+
+    // GET — Surprise Me
+    @GetMapping("/recommend/surprise")
+    public RecommendationResult surprise(
+            @RequestParam(required = false) String style,
+            @RequestParam(required = false) String budget,
+            @RequestParam(required = false) List<String> activities,
+            @RequestParam(required = false) String weather
+    ) {
+        List<RecommendationResult> results =
+                recommendationService.getTopMatchesWithReasons(style, budget, activities, weather);
+
+        if (results.isEmpty()) {
+            return null;
+        }
+
+        Random rand = new Random();
+        return results.get(rand.nextInt(results.size()));
+    }
+
+    // GET — Good weather destinations (your original endpoint)
     @GetMapping("/travel/good-weather")
     public List<Destination> getGoodWeatherDestinations() {
         return travelService.getDestinationsWithGoodWeather();
@@ -46,6 +84,12 @@ public class TravelController {
     @PostMapping("/travel")
     public Destination addDestination(@RequestBody Destination d) {
         return travelService.addDestination(d);
+    }
+
+    // POST — Personality quiz
+    @PostMapping("/personality-quiz")
+    public TravelPersonalityResult personalityQuiz(@RequestBody TravelPersonalityRequest req) {
+        return recommendationService.evaluatePersonality(req);
     }
 
     // PUT — Update a destination
