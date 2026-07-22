@@ -29,11 +29,6 @@ public class TravelController {
     public List<Destination> getAllDestinations() {
         return travelService.getAllDestinations();
     }
-    // GET — Recommendations
-    @GetMapping("/travel/recommendations")
-    public List<Destination> getRecommendations() {
-        return travelService.getRecommendedDestinations();
-    }
 
     // GET — Good weather destinations
     @GetMapping("/travel/good-weather")

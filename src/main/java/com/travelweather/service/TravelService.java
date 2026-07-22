@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import com.travelweather.model.Destination;
 import com.travelweather.model.Weather;
 import com.travelweather.model.TravelDetails;
+import com.travelweather.exception.DestinationNotFoundException;
+import com.travelweather.exception.WeatherException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,18 +25,19 @@ public class TravelService {
     public List<Destination> getAllDestinations() {
         return destinationDataService.getDestinations();
     }
-    // GET — Recommendations
-    public List<Destination> getRecommendedDestinations() {
-        return destinationDataService.getDestinations();
-    }
 
-    // GET — Good weather destinations
+    // GET — Good weather destinations (based on average temp)
     public List<Destination> getDestinationsWithGoodWeather() {
-        List<Destination> all = getRecommendedDestinations();
+        List<Destination> all = getAllDestinations();
         List<Destination> good = new ArrayList<>();
 
         for (Destination d : all) {
-            Weather w = weatherService.getWeatherForCity(d.getName());
+            Weather w;
+            try {
+                w = weatherService.getWeatherForCity(d.getName());
+            } catch (Exception e) {
+                throw new WeatherException("Weather lookup failed for " + d.getName());
+            }
 
             if (w.getTemperature() >= 65 && w.getTemperature() <= 85) {
                 good.add(d);
@@ -46,13 +49,19 @@ public class TravelService {
 
     // GET — Destination details
     public TravelDetails getDetails(String city) {
-        Destination destination = getRecommendedDestinations()
+
+        Destination destination = getAllDestinations()
                 .stream()
                 .filter(d -> d.getName().equalsIgnoreCase(city))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Destination not found"));
+                .orElseThrow(() -> new DestinationNotFoundException(city));
 
-        Weather weather = weatherService.getWeatherForCity(city);
+        Weather weather;
+        try {
+            weather = weatherService.getWeatherForCity(city);
+        } catch (Exception e) {
+            throw new WeatherException("Weather lookup failed for " + city);
+        }
 
         return new TravelDetails(destination, weather);
     }
@@ -72,5 +81,3 @@ public class TravelService {
         destinationDataService.deleteDestination(name);
     }
 }
-
-
